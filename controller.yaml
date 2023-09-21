@@ -1,0 +1,20 @@
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: CompositeController
+metadata:
+  name: bw-secret-controller
+spec:
+  generateSelector: true
+  resyncPeriodSeconds: 60
+  parentResource:
+    apiVersion: bitwarden.com/v1
+    resource: bitwardenclisecrets
+  childResources:
+  - apiVersion: v1
+    resource: secrets
+    updateStrategy:
+      method: Recreate
+  hooks:
+    sync:
+      webhook:
+        url: http://bw-secret-controller.bw-secrets/sync
+

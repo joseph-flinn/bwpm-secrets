@@ -1,0 +1,6 @@
+apiVersion: bitwarden.com/v1
+kind: BitwardenCLISecret
+metadata:
+  name: bw-cli-secret-test
+spec:
+  id: "4acdf48b-0584-42b6-80a5-af51013367f0"
